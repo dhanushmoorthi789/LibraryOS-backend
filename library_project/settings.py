@@ -4,13 +4,12 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-library-mgmt-change-in-production-xyz123'
-DEBUG = True
-ALLOWED_HOSTS = ['*']
-
-ALLOWED_HOSTS = os.environ.get( 
-"DJANGO_ALLOWED_HOSTS", 
-"localhost,127.0.0.1"
-).split(",") 
+DEBUG = False
+ALLOWED_HOSTS = [
+    "libraryos-backend-lo1j.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -90,10 +89,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CORS_ALLOWED_ORIGINS = [ 
-" http://localhost:3000",                      
-# local React app (dev) 
-] 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://libraryos-mng.netlify.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://libraryos-mng.netlify.app",
+]
 
 CORS_ALLOW_ALL_ORIGINS = False 
 CORS_ALLOW_CREDENTIALS = True 
